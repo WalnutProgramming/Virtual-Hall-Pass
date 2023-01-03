@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
+
+</head>
+
+<body>
+  <div class="topnav">
+    <a class="active" href="#">Home</a>
+    <a href="{{ url_for('profile') }}">Profile</a>
+    <a href="{{ url_for('classes') }}">Classes</a>
+    <a href="{{ url_for('about') }}">About</a>
+  </div>
+
+
+  <h1 class="heads">Virtual Hall Pass App</h1>
+  <h3 class="heads">Student Login</h3>
+  <form action="#" method = "post">
+
+    <label for="uname">PowerSchool Username</label>
+    <input type="text" id="fname" name="nm" placeholder="Your username..." required>
+
+    <label for="pwd">Password</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your password...">
+
+    <label for="room">Room Number Leaving</label>
+    <select id="number" name="number">
+      <option value="1001">1001</option>
+      <option value="1002">1002</option>
+      <option value="1003">1003</option>
+    </select>
+
+    <label for="goingTo">Going To</label>
+    <select id="to" name="to">
+      <option value="Bathroom">Bathroom</option>
+      <option value="Nurse">Nurse</option>
+      <option value="Locker">Locker</option>
+    </select>
+
+    <label for="reason">Reason (optional)</label>
+    <textarea id="reason" name="reason" placeholder="Write a reason..." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+
+  </form>
+  </div>
+</body>
+
+</html>
