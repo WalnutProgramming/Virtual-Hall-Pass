@@ -1,0 +1,9 @@
+<html>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/><br><br><br>
+  <br><br><br><br>
+  <form action="/issue" method = "post">
+    <label for="issue">Feedback:</label>
+      <input type="text" id="issue" name="issue" placeholder="type feedback here" required><br><br>
+  </form><br><br><br><br><br><a href="{{ url_for('dashboard')}}">Back to dashboard</a>
+    
+</html>

@@ -1,0 +1,22 @@
+<html>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
+  <title>Developer login</title>
+  <body>
+
+    <center>
+      <h1>Developer Login</h1>
+      <p>Please log in with your developer credentials</p>
+    </center>
+    <form action="/alog" method = "post">
+
+    <label for="uname">Username</label>
+    <input type="text" id="uname" name="username" placeholder="Selected developer username" required><br><br>
+
+    <label for="pword">Password</label>
+    <input type="password" id="pword" name="password" placeholder="Selected developer password" required>
+
+    <input type="submit" value="Submit">
+    
+  </body>
+  
+</html>

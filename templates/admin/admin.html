@@ -1,0 +1,16 @@
+<html>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
+  MESSAGE<br><br><br>
+  <a href="/devdump">Database dump</a><br><br><a href="/tokdump">Token dump</a><br><br>
+  
+  <form action="/handle" method = "post">
+
+    <input type="submit" value="cleardb", name="cleardb"><br><br>
+    <input type="submit" value="cleandb", name="cleandb"><br><br>
+    <input type="submit" value="cleanTokens", name="cleanTokens"><br><br>
+    <input type="submit" value="createUser", name="createUser"><br><br>
+    <input type="submit" value="DoCommand", name="DoCommand"><br><br>
+    
+  </body>
+  
+</html>

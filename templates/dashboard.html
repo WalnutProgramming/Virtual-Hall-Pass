@@ -1,3 +1,4 @@
+<!doctype html>
 {% extends "layout.html"%}
 {% block head%}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js">  </script>
@@ -7,28 +8,27 @@
 {% endblock%}
 {% block content%}
 
-  <form autocomplete="off">
+  <form action = "#" method = "post">
     
-  </form>
-  <label for="room">Room Number Leaving</label>
-  <select id="number" name="number" placeholder="room">
-    <option value="1001">1001</option>
-    <option value="1002">1002</option>
-    <option value="1003">1003</option>
-  </select>
-
-  <label for="goingTo">Going To</label>
-  <select id="to" name="to">
-    <option value="Bathroom">Bathroom</option>
-    <option value="Nurse">Nurse</option>
-    <option value="Locker">Locker</option>
-  </select>
-
-
+    <label for="room">Room Number Leaving</label>
+    <select id="number" name="room_number" placeholder="room">
+      <option value="1001">1001</option>
+      <option value="1002">1002</option>
+      <option value="1003">1003</option>
+    </select>
+  
+    <label for="goingTo">Going To</label>
+    <select id="to" name="destination">
+      <option value="Bathroom">Bathroom</option>
+      <option value="Nurse">Nurse</option>
+      <option value="Locker">Locker</option>
+    </select>
   <label for="reason">Reason (optional)</label>
   <textarea id="reason" name="reason" placeholder="Write a reason..." style="height:100px"></textarea>
+    <input type="submit" value="Submit">
+  </form>
 
-  <input type="submit" value="Submit">
+
   
 <script>  
   //allows people to type in dropdown boxes

@@ -1,3 +1,16 @@
+<!doctype html>
 {% extends "layout.html"%}
 {% block title%}Profile{% endblock%}
-{% block content%}<p>This is the profile page</p>{% endblock%}
+{% block content%}
+<div id="user-container">
+  <p>Name: <span id="name">John Doe</span></p>
+  <p>Password: <span id="password">*******</span></p>
+  <p>Classes:
+    <ul id="classes">
+      <li>Math</li>
+      <li>Science</li>
+      <li>English</li>
+    </ul>
+  </p>
+</div>
+{% endblock%}

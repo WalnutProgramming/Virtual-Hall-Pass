@@ -3,6 +3,7 @@
   <head>
       <meta name="viewport" content="width=device-width">
   <title>replit</title>
+  <script type="text/javascript" src="{{ url_for('static', filename='warn.js') }}"></script>
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
     {% block head %}
     <title>{% block title %}{% endblock %} - Page</title
@@ -10,18 +11,19 @@
   </head>
   <body>
     <div class="topnav">
-      <a href="{{ url_for('index')}}">Home</a>
+      <a href="{{ url_for('dashboard')}}">Home</a>
       <a href="{{ url_for('profile') }}">Profile</a>
-      <a href="{{ url_for('classes') }}">Classes</a>
       <a href="{{ url_for('about') }}">About</a>
       <a href="{{ url_for('backend') }}">Teacher</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+      <a href="{{ url_for('feedback') }}">Feedback</a>
     </div>
     <div id="content">
       {% block content %}{% endblock %}         
     </div>
     <div id="footer">
       {% block footer %}
-      &copy; Copyright 2010 by  <a href="http://domain.invalid/"></a>
+     <!-- &copy; Copyright 2010 by  <a href="http://domain.invalid/"></a>-->
       {% endblock %}
     </div>
   </body>

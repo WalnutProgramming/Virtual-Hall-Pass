@@ -1,0 +1,9 @@
+<html>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/><br><br><br>
+  <!--MESSAGE--><br><br><br><br>
+  <form action="/cmd" method = "post">
+    <label for="cmd">Command:</label>
+      <input type="text" id="cmd" name="command" placeholder="Python command here" required><br><br>
+  </form><br><br><br><br><br><a href="{{ url_for('admin')}}">Admin dashboard</a>
+    
+</html>

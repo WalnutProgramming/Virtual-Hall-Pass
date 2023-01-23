@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <script type="text/javascript" src="{{ url_for('static', filename='warn.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
+    {% block head %}
+    <title>{% block title %}{% endblock %} - Page</title
+    {% endblock %}
+  </head>
+  <body>
+    <div class="topnav">
+      <a href="{{ url_for('index')}}">Student</a>
+    </div>
+    <div class="content">
+      {% block content%}{% endblock%}
+      {% block footer %}
+      &copy; Copyright 2010 by  <a href="http://domain.invalid/"></a>
+      {% endblock %}
+    </div>
+  </body>
+</html>

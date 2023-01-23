@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: zsvision
+Version: 0.7.12
+Summary: Python utilities for computer vision
+Home-page: https://github.com/albanie/zsvision
+Author: Samuel Albanie
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.6
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: msgpack
+Requires-Dist: msgpack-numpy
+Requires-Dist: typeguard
+Requires-Dist: scipy
+Requires-Dist: mergedeep
+Requires-Dist: humanize
+Requires-Dist: matplotlib
+Requires-Dist: beartype (>=0.3.2)
+Requires-Dist: hickle (>=4.0.0)
+Requires-Dist: pyyaml
+
+### zsvision
+
+![zsvision-ci](https://github.com/albanie/zsvision/workflows/zsvision-ci/badge.svg)
+
+zsvision is a small collection of python utilities, occasionally useful for computer vision tasks.
+
