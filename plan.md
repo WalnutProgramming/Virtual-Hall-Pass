@@ -45,7 +45,7 @@ Mockup link: https://replit.com/@susthebus/Hall-Pass#main.py
 - anything below will automatically get deleted
 
 ## TODO (auto generated):
-- #TODO:  store user passwords encrypted, it is unsafe to store them raw  at line 37 in file User.py
-
 - #TODO:  make more secure by storing an encrypted uuid for eatch token  at line 8 in file Token.py
+
+- #TODO:  store user passwords encrypted, it is unsafe to store them raw  at line 37 in file User.py
 
