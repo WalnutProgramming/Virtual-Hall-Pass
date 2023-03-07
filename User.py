@@ -1,6 +1,7 @@
 from replit import db
 from uuid import uuid4
 from Permissions import Permission
+import hashlib
 
 #classes = {
 #  1: "band",
@@ -34,7 +35,7 @@ def index(dict, key):
       return i
   return False
 
-#TODO: store user passwords encrypted, it is unsafe to store them raw
+#TODO: store user passwords encrypted, it is unsafe to store them raw in the database
 class User:
 
   def __init__(self,
@@ -46,6 +47,7 @@ class User:
                perms: Permission = Permission()):
     global db
     self.perms = perms
+    self.password_encrypted = False
     self.first_name = first_name
     self.last_name = last_name
     #self.pass_history = []  # Hall passes history
@@ -53,6 +55,7 @@ class User:
     self.id = uuid4()
     self.username = username
     self.password = password
+    self.encrypt_password()
     for c in schedule:
       try:
         self.schedule.append(classes[c])
@@ -63,6 +66,20 @@ class User:
           print(f"[!] Class '{c}' not listed, ignoring class.")
     db[self.id] = self.generate_dict()
 
+  def encrypt_password(self):
+    if self.password_encrypted:
+      return
+    self.password = hashlib.md5(self.password.encode()).hexdigest()
+    self.password_encrypted = True
+
+  def compare_passwords(self, password):
+    if not self.password_encrypted:
+      return False
+    password = hashlib.md5(password.encode()).hexdigest()
+    if password == self.password:
+      return True
+    return False
+  
   def get_first_name(
     self
   ):  #You may not need this function to get the first name, you can do new_pass.first_name to save time
@@ -76,7 +93,7 @@ class User:
 
   def get_username(self):
     return self.username
-
+    
   def get_password(self):
     return self.password
 

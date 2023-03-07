@@ -3,7 +3,8 @@ defaults = {
   "can_view_user": True,
   "can_use_pass": True,
   "can_view_dev": False,
-  "can_submit_issues": False
+  "can_submit_issues": False,
+  "can_view_passes" : False
 }
 
 
@@ -31,9 +32,9 @@ perms = {
   "user":
   Permission(),
   "dev":
-  Permission(can_view_admin=True, can_view_dev=True, can_submit_issues=True),
+  Permission(can_view_admin=True, can_view_dev=True, can_submit_issues=True, can_view_passes=True),
   "admin":
-  Permission(can_view_admin=True, can_submit_issues=True),
+  Permission(can_view_admin=True, can_submit_issues=True, can_view_passes=True),
   "tester":
   Permission(can_submit_issues=True)
 }

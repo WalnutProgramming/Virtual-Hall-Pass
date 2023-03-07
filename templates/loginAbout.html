@@ -1,5 +1,11 @@
 <title>About - Virtual Hall Pass</title>
-{% extends "layout.html"%}
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
+  <div class="topnav">
+      <a class="active" href="https://virtual-hall-pass.owenturnbull.repl.co/">Login</a>
+      <a href="/admin">Admin</a>
+      <a href="/loginAbout">ABOUT</a>
+      <a href="/loginFeedback">Contact</a>
+    </div>
 {% block content%}
 <h1 class="heads">
   <br>Who are we?<br>
@@ -16,7 +22,7 @@
     <p class="links">
       <a href = "https://www.whhsprogrammingclub.com" target="_blank">WHHS Programming Club 22-23</a><br>
       <a href= "/"> Virtual Hall Pass App</a><br>
-      <a href="/admin">Admin</a> | <a href="/about">About</a> | <a href="/feedback">Report Issue</a>
+      <a href="/admin">Admin</a> | <a href=" /loginAbout">About</a> | <a href="/loginFeedback">Report Issue</a>
     </p>
-</footer>
+  </footer>
 {% endblock%}

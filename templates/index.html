@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <title>Login - Virtual Hall Pass</title>
     <script type="text/javascript" src="{{ url_for('static', filename='warn.js') }}"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>  
     <script>window.jQuery || document.write('<script src="{{
@@ -8,15 +9,15 @@
       <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
   </head>
   
-  <body>
+  <body><!-- The urls are not the full filepaths. They are custom defined. -->
     <div class="topnav">
-      <a class="active" href="index.html">Home</a>
-      <a href="admin.html">Admin</a>
-      <a href="about.html">About</a>
-      <a href="ReportIssue.html">Contact</a>
+      <a class="active" href="https://virtual-hall-pass.owenturnbull.repl.co/">LOGIN</a>
+      <a href="/admin">Admin</a>
+      <a href="/loginAbout">About</a>
+      <a href="/loginFeedback">Contact</a>
     </div>
     
-    <h1 class="heads">Virtual Hall Pass App</h1>
+    <h1 class="heads">Hallnut</h1>
     
     <form class = "fill" action="#" method = "post">
 
@@ -31,12 +32,11 @@
     <input type="submit" value="Submit">
     </form>
   </body>
-
   <footer>
-    <p>
-      <a href = "whhsprogrammingclub.com">WHHS Programming Club 22-23</a><br>
-      <a href= "index.html"> Virtual Hall Pass App</a><br>
-      <a href="about.html">Admin</a> | <a href = "about.html">About</a> | <a href = "ReportIssue.html">Report Issue</a>
+    <p class="links">
+      <a href = "https://www.whhsprogrammingclub.com" target="_blank">WHHS Programming Club 22-23</a><br>
+      <a href= "/"> Virtual Hall Pass App</a><br>
+      <a href="/admin">Admin</a> | <a href=" /loginAbout">About</a> | <a href="/loginFeedback">Report Issue</a>
     </p>
   </footer>
 </html>

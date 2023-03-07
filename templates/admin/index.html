@@ -1,10 +1,16 @@
 <html>
+  
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
-  <title>Developer login</title>
+  <title>Developer Login - Virtual Hall Pass</title>
   <body>
-
+    <div class="topnav">
+      <a class="active" href="https://virtual-hall-pass.owenturnbull.repl.co/">Login</a>
+      <a href="/admin">ADMIN</a>
+      <a href="/loginAbout">About</a>
+      <a href="/loginFeedback">Contact</a>
+    </div>
     <center>
-      <h1>Developer Login</h1>
+      <h1 class="heads">Developer Login</h1>
       <p>Please log in with your developer credentials</p>
     </center>
     <form action="/alog" method = "post">
@@ -16,6 +22,14 @@
     <input type="password" id="pword" name="password" placeholder="Selected developer password" required>
 
     <input type="submit" value="Submit">
+
+  <footer>
+    <p class="links">
+      <a href = "https://www.whhsprogrammingclub.com" target="_blank">WHHS Programming Club 22-23</a><br>
+      <a href= "/"> Virtual Hall Pass App</a><br>
+      <a href="/admin">Admin</a> | <a href=" /loginAbout">About</a> | <a href="/loginFeedback">Report Issue</a>
+    </p>
+  </footer>
     
   </body>
   

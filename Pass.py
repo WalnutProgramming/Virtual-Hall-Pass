@@ -1,6 +1,7 @@
 from replit import db
 import time as time
 import datetime as datetime
+from uuid import uuid4
 
 #passes = len(db.prefix("pass")) + 1
 
@@ -13,6 +14,8 @@ class PassStore:
 
   def __init__(self, admin_password="password"):
     self.data = {}
+    self.internals = {}# The class objects
+    self.latest_passes = {}
     self.a = admin_password
     self.load()
 
@@ -25,14 +28,24 @@ class PassStore:
       db["Pass"] = {}
     self.data = db["Pass"]
 
+  def update_data(self):  #Update passes
+    for i in self.internals:
+      user = i
+      newpasses = []
+      for m in self.internals[user]:
+        dictt = self.internals[user][m].dict()
+        newpasses.append(dictt)
+      print("[DEBUG] NEWPASS:" + str(newpasses))
+      self.data[str(i)] = newpasses
+
   def write(self):
     """
     Write passes to the database from internal data
     """
-
+    self.update_data()
     db["Pass"] = self.data
 
-  def create_pass(self, origin, destination, user):
+  def create_pass(self, origin, destination, user, reason=""):
     """
     Create a pass object and store it
 
@@ -40,8 +53,13 @@ class PassStore:
     """
     if not user in self.data:
       self.data[user] = []
-    tempass = Pass(origin, destination, user)
-    self.data[user].append(tempass.dict())
+    if not user in self.internals:
+      self.internals[user] = {}
+    tempass = Pass(origin, destination, user, reason)
+    dictt = tempass.dict()
+    self.data[user].append(dictt)
+    self.internals[user][dictt['id']] = tempass
+    self.latest_passes[user] = tempass
     self.write()
     return tempass
 
@@ -51,6 +69,7 @@ class PassStore:
 
     return: list
     """
+    self.update_data()
     if user in self.data:
       return self.data[user]
     else:
@@ -62,18 +81,27 @@ class PassStore:
 
     return: Pass(origin, destination, user) OR None
     """
+    self.update_data()
 
-    greatest = None
-    if user in self.data:
-      for i in self.data[user]:
-        b = Pass("4", "4", "4")
-        b.load_dict(i)
-        if greatest is None:
-          greatest = b
-        if b.start_time > greatest.start_time:
-          greatest = b
+    if user in self.latest_passes:
+      return self.latest_passes[user]
+    else:
+      return Pass("None", "None", "None")
+  
+    #Old method:
+    
+    #greatest = None
+    #print(self.data[user])
+    #if user in self.data:
+    #  for i in self.data[user]:
+    #    b = Pass("4", "4", "4")
+    #    b.load_dict(i)
+    #    if greatest is None:
+    #      greatest = b
+    #    if b.start_time > greatest.start_time:
+    #      greatest = b
 
-    return greatest
+    #return greatest
 
   def clear_all_passes(self, password):
     """
@@ -81,7 +109,6 @@ class PassStore:
 
     return: None
     """
-
     self.data = {}
     self.write()
 
@@ -91,7 +118,6 @@ class PassStore:
 
     return: boolean
     """
-
     if password != self.a:
       return False
 
@@ -112,6 +138,8 @@ class PassStore:
     #   pas["elapsed_time"] = pas["end_time"] - pas["start_time"]
     #  print(pas)
     pas.set_end_time(time.time())
+    print("[DEBUG] Finished a pass: " + str(pas.end_time))
+    self.update_data()
 
   def get_user_passes_sorted(self, user, reverse=False):
     """
@@ -120,7 +148,7 @@ class PassStore:
 
     return: list
     """
-
+    self.update_data()
     sort = []
     if user in self.data:
       sort = []
@@ -134,9 +162,11 @@ class PassStore:
 
 class Pass:
 
-  def __init__(self, origin, destination, user):
+  def __init__(self, origin, destination, user, reason=""):
+    self.reason = reason
     self.start_time = time.time()
     self.end_time = None
+    self.id = str(uuid4())
     self.origin = origin
     self.destination = destination
     date = datetime.datetime.now()
@@ -149,7 +179,7 @@ class Pass:
   def get_start_time(self):
     return self.start_time
 
-  def get_end_time(self):
+  def get_end_time(self):# Two different return types!
     if self.end_time != None:
       return self.end_time
     return "Pass in progress"
@@ -169,7 +199,7 @@ class Pass:
   def set_end_time(self, end_time):
     self.end_time = end_time
     self.set_elapsed_time()
-    print("[DEBUG] ", self.elapsed_time)
+    print("[DEBUG] elapsed time: ", self.elapsed_time)
     #print("pass completed " + self.stringify())
     #db["pass" + str(passes)] = self.stringify()
     #Might be causing errs
@@ -179,17 +209,24 @@ class Pass:
     Loads all variables fron the function into a dict
     """
     dict = {}
+    if self.end_time:
+      self.set_elapsed_time()
     for i in dir(self):
       if not i.startswith("__") and not callable(self.__getattribute__(i)):
         dict[i] = self.__getattribute__(i)
     return dict
 
-  def load_dict(self, dict):
+  def load_dict(self, dictt):
     """
     Used to load the class from a dict (returned by dict())
     """
-    for i in dict:
-      self.__setattr__(i, dict[i])
+    if type(dictt) != type({}):
+      print("NOT A DICT")
+      print(dictt)
+      print(type(dictt))
+      raise Exception
+    for i in dictt:
+      self.__setattr__(i, dictt[i])
 
   def stringify(self):
     return "{}, origin : {}, destination : {}, date : {}, start_time: {}, end_time : {}, elapsed_time : {} seconds".format(

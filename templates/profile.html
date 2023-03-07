@@ -1,9 +1,10 @@
 <!doctype html>
+<title>Profile - Virtual Hall Pass</title>
 {% extends "layout.html"%}
 {% block title%}Profile{% endblock%}
 {% block content%}
 <div id="user-container">
-  <p>Name: <span id="name">John Doe</span></p>
+  <p>Name: <span id="name">Liam Lock</span></p>
   <p>Password: <span id="password">*******</span></p>
   <p>Classes:
     <ul id="classes">
@@ -13,4 +14,11 @@
     </ul>
   </p>
 </div>
+<footer>
+    <p class="links">
+      <a href = "https://www.whhsprogrammingclub.com" target="_blank">WHHS Programming Club 22-23</a><br>
+      <a href= "/"> Virtual Hall Pass App</a><br>
+      <a href="/admin">Admin</a> | <a href="/about">About</a> | <a href="/feedback">Report Issue</a>
+    </p>
+</footer>
 {% endblock%}
